@@ -8,7 +8,7 @@ type PropTypes = {
   headers: string[];
 };
 
-const Searchbar = (props: PropTypes) => {
+const Table = (props: PropTypes) => {
   return (
     <table className="table-auto mx-auto">
       <thead>
@@ -34,4 +34,4 @@ const Searchbar = (props: PropTypes) => {
   );
 };
 
-export default Searchbar;
+export default Table;
