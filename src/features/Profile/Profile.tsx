@@ -14,7 +14,7 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    backgroundColor: "#121212"
+    backgroundColor: "#fff"
   }
 };
 
@@ -36,7 +36,7 @@ const Profile = () => {
     <div className="grid grid-cols-6 gap-4 min-h-screen">
       <div className="col-start-1 col-end-3 p-10 rounded-lg text-black">
         <img
-          className="rounded-lg"
+          className="rounded-full pt-10"
           src={userData.avatar_url}
           alt="avatar"
           width="300"

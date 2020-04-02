@@ -3,7 +3,7 @@ import { Repo as RepoType } from "../../app/userSlice";
 
 const Repo = (props: { data: RepoType }) => {
   return (
-    <div className="bg-purple-600 text-white hover:shadow-outline rounded-lg shadow-lg">
+    <div className=" bg-white hover:bg-blue-700 text-black hover:text-white hover:shadow-outline rounded-lg shadow-lg">
       <div className="px-4 py-4 mb-4 mr-2 text-sm">
         <div className="flex">
           <div className="mr-2 flex justify-center items-center">
