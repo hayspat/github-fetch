@@ -1,5 +1,5 @@
 import React from "react";
-import { Repo as RepoType } from "../../app/userSlice";
+import { Repo as RepoType } from "../store/userSlice";
 
 const Repo = (props: { data: RepoType }) => {
   return (

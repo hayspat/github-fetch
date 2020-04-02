@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Profile from "./features/Profile";
-import MainPage from "./features/MainPage";
+import Profile from "./Profile";
+import MainPage from "./MainPage";
 
 const Routes = (): JSX.Element => {
   return (

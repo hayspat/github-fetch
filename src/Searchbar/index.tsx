@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { searchAsync } from "../../app/searchSlice";
+import { searchAsync } from "../store/searchSlice";
 
 const Searchbar = () => {
   const [searchValue, setSearchValue] = useState("");

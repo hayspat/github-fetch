@@ -1,7 +1,7 @@
 import React from "react";
 import Searchbar from "../Searchbar";
 import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { RootState } from "../store/store";
 import UserList from "../UserList";
 
 const MainPage = () => {
