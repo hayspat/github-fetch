@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppThunk, RootState } from "./store";
+import { AppThunk } from "./store";
 import axios from "axios";
 interface ISearchState {
   total_count: number;
@@ -40,7 +40,7 @@ export const slice = createSlice({
   initialState,
   reducers: {
     // Use the PayloadAction type to declare the contents of `action.payload`
-    setSearch: (state, action: PayloadAction<any>) => {
+    setSearch: (_, action: PayloadAction<any>) => {
       return action.payload;
     }
   }

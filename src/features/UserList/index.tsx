@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 type PropTypes = {
   username: string;
   avatarUrl: string;
+  onClick?: () => void;
 };
 
 const UserList = (props: PropTypes) => {
   return (
-    <div className="overflow-hidden max-w-sm bg-white rounded w-full shadow-lg hover:bg-blue-700 p-4 border-b mb-4 text-black hover:text-white mx-4">
+    <div
+      className="overflow-hidden max-w-sm bg-white rounded w-full shadow-lg hover:bg-blue-700 p-4 border-b mb-4 text-black hover:text-white mx-4"
+      onClick={props.onClick}
+    >
       <Link to={"/profile/" + props.username}>
         <div className="flex flex-row items-center">
           <img

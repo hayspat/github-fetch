@@ -5,7 +5,6 @@ import axios from "axios";
 type StringAndNull = string | null;
 
 export type Repo = {
-  html_url: string;
   name: string;
   description: StringAndNull;
   forks_count: number;
@@ -16,78 +15,43 @@ export type Repo = {
 
 export type Profile = {
   login: string;
-  id: number;
-  node_id: string;
   avatar_url: string;
-  gravatar_id: StringAndNull;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: string;
-  site_admin: boolean;
   name: StringAndNull;
   company: StringAndNull;
-  blog: StringAndNull;
-  location: StringAndNull;
-  email: StringAndNull;
-  hireable: boolean | null;
   bio: StringAndNull;
   public_repos: number;
-  public_gists: number;
   followers: number;
   following: number;
   created_at: string;
-  updated_at: string;
+};
+
+export type FollowerType = {
+  login: string;
+  avatar_url: string;
 };
 
 export interface IUserProfile {
   profile: Profile;
   repos: Repo[];
+  followers: FollowerType[];
+  following: FollowerType[];
 }
 
 const initialState: IUserProfile = {
   profile: {
     login: "",
-    id: 0,
-    node_id: "",
     avatar_url: "",
-    gravatar_id: null,
-    url: "",
-    html_url: "",
-    followers_url: "",
-    following_url: "",
-    gists_url: "",
-    starred_url: "",
-    subscriptions_url: "",
-    organizations_url: "",
-    repos_url: "",
-    events_url: "",
-    received_events_url: "",
-    type: "",
-    site_admin: false,
     name: null,
     company: null,
-    blog: null,
-    location: null,
-    email: null,
-    hireable: null,
     bio: null,
     public_repos: 0,
-    public_gists: 0,
     followers: 0,
     following: 0,
-    created_at: "",
-    updated_at: ""
+    created_at: ""
   },
-  repos: []
+  repos: [],
+  followers: [],
+  following: []
 };
 
 export const slice = createSlice({
@@ -100,11 +64,22 @@ export const slice = createSlice({
     },
     setUserRepos: (state, action: PayloadAction<any>) => {
       state.repos = action.payload;
+    },
+    setUserFollowers: (state, action: PayloadAction<any>) => {
+      state.followers = action.payload;
+    },
+    setUserFollowing: (state, action: PayloadAction<any>) => {
+      state.following = action.payload;
     }
   }
 });
 
-export const { setUserProfile, setUserRepos } = slice.actions;
+export const {
+  setUserProfile,
+  setUserRepos,
+  setUserFollowers,
+  setUserFollowing
+} = slice.actions;
 
 export const getUserProfile = (param: string): AppThunk => dispatch => {
   axios.get("https://api.github.com/users/" + param).then(response => {
@@ -118,6 +93,24 @@ export const getUserRepos = (param: string): AppThunk => dispatch => {
     .then(response => {
       dispatch(setUserRepos(response.data));
       console.log(response.data, "dataFromRepos");
+    });
+};
+
+export const getUserFollowers = (param: string): AppThunk => dispatch => {
+  axios
+    .get("https://api.github.com/users/" + param + "/followers")
+    .then(response => {
+      dispatch(setUserFollowers(response.data));
+      console.log(response.data, "followers");
+    });
+};
+
+export const getUserFollowing = (param: string): AppThunk => dispatch => {
+  axios
+    .get("https://api.github.com/users/" + param + "/following")
+    .then(response => {
+      dispatch(setUserFollowing(response.data));
+      console.log(response.data, "following");
     });
 };
 
