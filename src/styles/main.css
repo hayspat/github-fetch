@@ -578,6 +578,10 @@ video {
   height: auto;
 }
 
+body {
+  background-color: #fafafa;
+}
+
 .container {
   width: 100%;
 }
