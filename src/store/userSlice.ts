@@ -82,9 +82,12 @@ export const {
 } = slice.actions;
 
 export const getUserProfile = (param: string): AppThunk => dispatch => {
-  axios.get("https://api.github.com/users/" + param).then(response => {
-    dispatch(setUserProfile(response.data));
-  });
+  axios
+    .get("https://api.github.com/users/" + param)
+    .then(response => {
+      dispatch(setUserProfile(response.data));
+    })
+    .catch(error => console.log(error));
 };
 
 export const getUserRepos = (param: string): AppThunk => dispatch => {
@@ -92,8 +95,8 @@ export const getUserRepos = (param: string): AppThunk => dispatch => {
     .get("https://api.github.com/users/" + param + "/repos")
     .then(response => {
       dispatch(setUserRepos(response.data));
-      console.log(response.data, "dataFromRepos");
-    });
+    })
+    .catch(error => console.log(error));
 };
 
 export const getUserFollowers = (param: string): AppThunk => dispatch => {
@@ -101,8 +104,8 @@ export const getUserFollowers = (param: string): AppThunk => dispatch => {
     .get("https://api.github.com/users/" + param + "/followers")
     .then(response => {
       dispatch(setUserFollowers(response.data));
-      console.log(response.data, "followers");
-    });
+    })
+    .catch(error => console.log(error));
 };
 
 export const getUserFollowing = (param: string): AppThunk => dispatch => {
@@ -110,8 +113,8 @@ export const getUserFollowing = (param: string): AppThunk => dispatch => {
     .get("https://api.github.com/users/" + param + "/following")
     .then(response => {
       dispatch(setUserFollowing(response.data));
-      console.log(response.data, "following");
-    });
+    })
+    .catch(error => console.log(error));
 };
 
 export default slice.reducer;

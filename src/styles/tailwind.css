@@ -1,5 +1,9 @@
 @tailwind base;
 
+body {
+  background-color: #fafafa;
+}
+
 @tailwind components;
 
 @tailwind utilities;

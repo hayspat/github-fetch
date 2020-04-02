@@ -56,10 +56,12 @@ export const searchAsync = (param: string): AppThunk => dispatch => {
   /*   setTimeout(() => {
     dispatch(incrementByAmount(amount));
   }, 1000); */
-  axios.get("https://api.github.com/search/users?q=" + param).then(response => {
-    dispatch(setSearch(response.data));
-    console.log(response.data, "dataFromResponse");
-  });
+  axios
+    .get("https://api.github.com/search/users?q=" + param)
+    .then(response => {
+      dispatch(setSearch(response.data));
+    })
+    .catch(error => console.log(error));
 };
 
 // The function below is called a selector and allows us to select a value from
